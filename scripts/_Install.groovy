@@ -6,7 +6,7 @@ def sourceFile
 def targetFile
 
 // copy Readme into project
-sourceFile = "${pluginBasedir}/grails-app/Readme"
+sourceFile = "${pluginBasedir}/grails-app/readme"
 targetFile = "${basedir}/README-Lib"
 ant.copy(file: sourceFile, tofile: targetFile, overwrite: true)
 ant.delete(file: sourceFile)
