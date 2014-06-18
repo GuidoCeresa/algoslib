@@ -6,16 +6,19 @@ Viene installato di default dal plugin -algos-, oppure anche singolarmente
 Per l'applicazione sono disponibili le classi statiche di liberia (situate nel plugin):
 Lib (classe di redirect)
 LibArray
+LibFile
 LibGrails
 LibHtml
 LibMat
 LibTesto
+LibTime
+LibWeb
 LibWiki
 L'applicazione od il plugin che utilizza quersto plugin, NON possono avere classi statiche
 di libreria con lo stesso nome. Se occorre, vanno chiamate ... LibWiki2 (o simile)
 
 Per invocare un metodo ... -> Lib.-> suggerisce i nomi delle classi reali,
-    ma poi non suggerisce il nome del metodo
+    e poi suggerisce il nome del metodo
 Per invocare un metodo ... -> LibTesto.-> suggerisce i nomi dei metodi
     di questa classe
 
@@ -30,6 +33,3 @@ Scripts: ricopia il file i18n/algosvers.properties
 Templates: usati solo internamente (esclusi dal JAR)
 Test: usati solo internamente (esclusi dal JAR)
 CSS: utilizza il css dell'applicazione finale (esclusi dal JAR)
-
-@TODO mancano i test
-@TODO presentare la data in forma umanamente leggibile
