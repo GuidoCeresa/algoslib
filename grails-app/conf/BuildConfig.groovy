@@ -53,6 +53,7 @@ grails.project.dependency.resolution = {
         //--provided - dependency that is needed at compile-time but should not be packaged with the app (usually because it is provided by the container). An example is the Servlet API
         runtime 'mysql:mysql-connector-java:5.1.30'
         compile "org.springframework:spring-orm:$springVersion"
+        test "org.grails:grails-datastore-test-support:1.0-grails-2.4"
     }// fine della closure dependencies
 
     plugins {
