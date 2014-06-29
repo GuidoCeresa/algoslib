@@ -53,7 +53,7 @@ public static moveFile(String srcDirPath, String dstDirPath, String fileName) {
 
 
 public static copyFile(String srcFile, String destFile) {
-    new AntBuilder().copy(file: srcFile, tofile: destFile)
+    new AntBuilder().copy(file: srcFile, tofile: destFile, overwrite: true)
 } // fine del metodo
 
 public static deleteFile(String pathFile) {
