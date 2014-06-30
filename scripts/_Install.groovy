@@ -2,15 +2,37 @@
  * Main script to setup algoslib on installation
  */
 
-def sourceFile
-def targetFile
+//--utilizza le special variables provided by Gant
+String source = "${pluginBasedir}"
+String dest = "${basedir}"
+source = source + "/"
+dest = dest + "/"
 
 // copy readme into project
-sourceFile = "${pluginBasedir}/README"
-targetFile = "${basedir}/README-Lib"
-new AntBuilder().copy(file: sourceFile, tofile: targetFile, overwrite: true)
-new AntBuilder().delete(file: sourceFile)
+moveFile(source, dest, "README", "README-Lib")
 
 print('------------')
 print('Algoslib - creato (o sovrascritto) README-Lib')
 print('------------')
+
+
+public static moveFile(String srcDirPath, String dstDirPath, String fileName) {
+    moveFile(srcDirPath, dstDirPath, fileName, fileName)
+} // fine del metodo
+
+public static moveFile(String srcDirPath, String dstDirPath, String srcFileName, String dstFileName) {
+    String srcFile = srcDirPath + srcFileName
+    String destFile = dstDirPath + dstFileName
+
+    copyFile(srcFile, destFile)
+    deleteFile(srcFile)
+} // fine del metodo
+
+
+public static copyFile(String srcFile, String destFile) {
+    new AntBuilder().copy(file: srcFile, tofile: destFile, overwrite: true)
+} // fine del metodo
+
+public static deleteFile(String pathFile) {
+    new AntBuilder().delete(file: pathFile)
+} // fine del metodo

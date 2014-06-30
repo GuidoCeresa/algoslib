@@ -32,11 +32,10 @@ print('------------')
 print('Algoslib - test dello script')
 print('------------')
 
-
 //--copia tutti i files dalla della directory indicata
 //--sposta file RefreshJob
 //ab.moveFile(source, dest, "${jobsDir}RefreshJob")
-moveFile(source, dest, "${domainDir}Pippoz.groovy")
+moveFile(source, dest, "${domainDir}Pippoz.groovy","${domainDir}PipponeBello.groovy")
 
 print('------------')
 print('Algoslib - fine test')
@@ -44,8 +43,12 @@ print('------------')
 
 
 public static moveFile(String srcDirPath, String dstDirPath, String fileName) {
-    String srcFile = srcDirPath + fileName
-    String destFile = dstDirPath + fileName
+    moveFile(srcDirPath, dstDirPath, fileName, fileName)
+} // fine del metodo
+
+public static moveFile(String srcDirPath, String dstDirPath, String srcFileName, String dstFileName) {
+    String srcFile = srcDirPath + srcFileName
+    String destFile = dstDirPath + dstFileName
 
     copyFile(srcFile, destFile)
     deleteFile(srcFile)
