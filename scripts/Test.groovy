@@ -35,18 +35,24 @@ print('------------')
 //--copia tutti i files dalla della directory indicata
 //--sposta file RefreshJob
 //ab.moveFile(source, dest, "${jobsDir}RefreshJob")
-moveFile(source, dest, "${domainDir}Pippoz.groovy","${domainDir}PipponeBello.groovy")
+moveFile(source, dest, "${domainDir}Plutoz.groovy")
+copyFile(source, dest, "${domainDir}Paperinoz.groovy")
+copyFile(source, dest, "${domainDir}Pippoz.groovy","${domainDir}PipponeBello.groovy")
 
 print('------------')
 print('Algoslib - fine test')
 print('------------')
 
 
+public static copyFile(String srcDirPath, String dstDirPath, String fileName) {
+    copyFile(srcDirPath, dstDirPath, fileName, fileName)
+} // fine del metodo
+
 public static moveFile(String srcDirPath, String dstDirPath, String fileName) {
     moveFile(srcDirPath, dstDirPath, fileName, fileName)
 } // fine del metodo
 
-public static moveFile(String srcDirPath, String dstDirPath, String srcFileName, String dstFileName) {
+public static copyFile(String srcDirPath, String dstDirPath, String srcFileName, String dstFileName) {
     String srcFile = srcDirPath + srcFileName
     String destFile = dstDirPath + dstFileName
 
@@ -54,6 +60,12 @@ public static moveFile(String srcDirPath, String dstDirPath, String srcFileName,
     deleteFile(srcFile)
 } // fine del metodo
 
+public static moveFile(String srcDirPath, String dstDirPath, String srcFileName, String dstFileName) {
+    String srcFile = srcDirPath + srcFileName
+    String destFile = dstDirPath + dstFileName
+
+    copyFile(srcFile, destFile)
+} // fine del metodo
 
 public static copyFile(String srcFile, String destFile) {
     new AntBuilder().copy(file: srcFile, tofile: destFile, overwrite: true)
