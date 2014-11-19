@@ -26,12 +26,13 @@ String viewsDir = "${appDir}views/"
 String templatesDir = "src/templates/"
 String artifactsDir = "${templatesDir}artifacts/"
 String scaffoldingDir = "${templatesDir}scaffolding/"
-
+String scriptsgDir = "scripts/"
 
 //--copia tutti i files dalla della directory indicata
-moveFile(source, dest, "${domainDir}Plutoz.groovy")
-copyFile(source, dest, "${domainDir}Paperinoz.groovy")
-copyFile(source, dest, "${domainDir}Pippoz.groovy", "${domainDir}PipponeBello.groovy")
+moveFile(source, dest, "${scriptsgDir}Test.groovy")
+//moveFile(source, dest, "${domainDir}Plutoz.groovy")
+//copyFile(source, dest, "${domainDir}Paperinoz.groovy")
+//copyFile(source, dest, "${domainDir}Pippoz.groovy", "${domainDir}PipponeBello.groovy")
 
 
 public static newFile(String srcDirPath, String dstDirPath, String fileName) {

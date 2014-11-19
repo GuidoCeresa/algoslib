@@ -160,4 +160,27 @@ class LibMat {
         /* valore di ritorno */
         return minore
     }// fine del metodo
+
+    /**
+     * Avanzamento di un ciclo
+     *
+     * @param numeroCorrente del ciclo
+     * @param numeroDelBlocco per un ritorno valido
+     *
+     * @return vero quando numeroCorrente è un multiplo esatto di numeroDelBlocco
+     */
+    public static boolean avanzamento(int numeroCorrente, int numeroDelBlocco) {
+        boolean fineBlocco = false
+        int resto
+
+        if (numeroDelBlocco > 0 && numeroCorrente >= numeroDelBlocco) {
+            resto = numeroCorrente % numeroDelBlocco
+            if (resto == 0 ) {
+                fineBlocco = true
+            }// fine del blocco if
+        }// fine del blocco if
+
+        return fineBlocco
+    }// fine del metodo
+
 }// fine della classe statica

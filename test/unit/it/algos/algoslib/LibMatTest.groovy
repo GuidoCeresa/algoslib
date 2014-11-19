@@ -128,4 +128,75 @@ class LibMatTest extends GroovyTestCase {
         assert risultato == previsto
     } // fine del test
 
+    /**
+     * Avanzament di un ciclo
+     *
+     * @param numeroCorrente del ciclo
+     * @param numeroDelBlocco per un ritorno valido
+     *
+     * @return vero quando numeroCorrente è un multiplo esatto di numeroDelBlocco
+     */
+    void testAvanzamento() {
+        boolean previsto
+        boolean risultato
+        int numeroCorrente
+        int numeroDelBlocco = 10
+        int numeroDelBloccoErrato = 0
+
+        numeroCorrente = 0
+        previsto = false
+        risultato = LibMat.avanzamento(numeroCorrente, numeroDelBloccoErrato)
+        assert risultato == previsto
+
+        numeroCorrente = 7
+        previsto = false
+        risultato = LibMat.avanzamento(numeroCorrente, numeroDelBloccoErrato)
+        assert risultato == previsto
+
+        numeroCorrente = 0
+        previsto = false
+        risultato = LibMat.avanzamento(numeroCorrente, numeroDelBlocco)
+        assert risultato == previsto
+
+        numeroCorrente = 1
+        previsto = false
+        risultato = LibMat.avanzamento(numeroCorrente, numeroDelBlocco)
+        assert risultato == previsto
+
+        numeroCorrente = 5
+        previsto = false
+        risultato = LibMat.avanzamento(numeroCorrente, numeroDelBlocco)
+        assert risultato == previsto
+
+        numeroCorrente = 9
+        previsto = false
+        risultato = LibMat.avanzamento(numeroCorrente, numeroDelBlocco)
+        assert risultato == previsto
+
+        numeroCorrente = 10
+        previsto = true
+        risultato = LibMat.avanzamento(numeroCorrente, numeroDelBlocco)
+        assert risultato == previsto
+
+        numeroCorrente = 15
+        previsto = false
+        risultato = LibMat.avanzamento(numeroCorrente, numeroDelBlocco)
+        assert risultato == previsto
+
+        numeroCorrente = 20
+        previsto = true
+        risultato = LibMat.avanzamento(numeroCorrente, numeroDelBlocco)
+        assert risultato == previsto
+
+        numeroCorrente = 21
+        previsto = false
+        risultato = LibMat.avanzamento(numeroCorrente, numeroDelBlocco)
+        assert risultato == previsto
+
+        numeroCorrente = 30
+        previsto = true
+        risultato = LibMat.avanzamento(numeroCorrente, numeroDelBlocco)
+        assert risultato == previsto
+    }// fine del metodo
+
 } // fine della classe test unit

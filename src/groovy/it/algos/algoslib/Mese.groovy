@@ -32,7 +32,7 @@ public enum Mese {
 
     // l'anno parte da gennaio che è il numero 1
     public static int getGiorni(int ord) {
-        int giorni  =0
+        int giorni = 0
         Mese mese = getMese(ord)
 
         if (mese) {
