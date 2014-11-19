@@ -3,7 +3,7 @@
 //
 class AlgoslibGrailsPlugin {
     // the plugin version
-    def version = "0.57"
+    def version = "0.58"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "2.4.2 > *"
     // the other plugins this plugin depends on
