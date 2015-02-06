@@ -807,4 +807,112 @@ class LibTestoTest extends GroovyTestCase {
         assert ottenuto == originale
     } // fine del metodo
 
+    /**
+     * Trova la prima occorrenza della lista di tag
+     *
+     * @testo da controllare
+     * @tag uno o più
+     * @return posizione del primo tag trovato, zero se non ce ne sono
+     */
+    void testTrovaPrimo() {
+        String originale = 'Prova di tag varii tipo{{'
+        String tag = 'varii'
+        String tag2 = 'tipo'
+        String tag3 = 'di'
+        String tag4 = 'non esiste'
+        String tag5 = 'forse'
+        int richiesto
+        int ottenuto
+
+        richiesto = 13
+        ottenuto = LibTesto.trovaPrimo(originale, tag)
+        assert ottenuto == richiesto
+
+        richiesto = 19
+        ottenuto = LibTesto.trovaPrimo(originale, tag2)
+        assert ottenuto == richiesto
+
+        richiesto = 6
+        ottenuto = LibTesto.trovaPrimo(originale, tag3)
+        assert ottenuto == richiesto
+
+        richiesto = 13
+        ottenuto = LibTesto.trovaPrimo(originale, tag, tag2)
+        assert ottenuto == richiesto
+
+        richiesto = 6
+        ottenuto = LibTesto.trovaPrimo(originale, tag3, tag2)
+        assert ottenuto == richiesto
+
+        richiesto = 6
+        ottenuto = LibTesto.trovaPrimo(originale, tag3, tag)
+        assert ottenuto == richiesto
+
+        richiesto = 13
+        ottenuto = LibTesto.trovaPrimo(originale, tag2, tag)
+        assert ottenuto == richiesto
+
+        richiesto = 6
+        ottenuto = LibTesto.trovaPrimo(originale, tag, tag2, tag3)
+        assert ottenuto == richiesto
+        ottenuto = LibTesto.trovaPrimo(originale, tag2, tag3, tag)
+        assert ottenuto == richiesto
+
+        richiesto = 0
+        ottenuto = LibTesto.trovaPrimo(originale, tag4)
+        assert ottenuto == richiesto
+
+        richiesto = 0
+        ottenuto = LibTesto.trovaPrimo(originale, tag4, tag5)
+        assert ottenuto == richiesto
+    }// fine del metodo
+
+    /**
+     * Testo rimanente dopo un secondo tag (fisso) successivo ad un primo tag (variabile)
+     * <p>
+     * Il primo tag può essere singolo oppure una lista di tag di cui rintracciare la prima occorrenza <br>
+     * Successivamente ricerca il secondo tag a partire da quello trovato <br>
+     * Recupera il testo successivo al secondo tag <br>
+     */
+    void testTestoSuccessivo() {
+        String originale = 'Prova ;,di tag, varii, ;tipo, e; testo successivo'
+        String tag1 = 'varii'
+        String tag2 = 'tipo'
+        String tag3 = 'di'
+        String tag4 = 'non esiste'
+        String secondoTag = ','
+        String secondoTag2 = ';'
+        String richiesto
+        String ottenuto
+
+        richiesto = ' ;tipo, e; testo successivo'
+        ottenuto = LibTesto.testoSuccessivo(originale, secondoTag, tag1)
+        assert ottenuto == richiesto
+
+        richiesto = ' e; testo successivo'
+        ottenuto = LibTesto.testoSuccessivo(originale, secondoTag, tag2)
+        assert ottenuto == richiesto
+
+        richiesto = ' varii, ;tipo, e; testo successivo'
+        ottenuto = LibTesto.testoSuccessivo(originale, secondoTag, tag1, tag2, tag3)
+        assert ottenuto == richiesto
+
+        richiesto = 'tipo, e; testo successivo'
+        ottenuto = LibTesto.testoSuccessivo(originale, secondoTag2, tag1, tag2, tag3)
+        assert ottenuto == richiesto
+
+        richiesto = 'tipo, e; testo successivo'
+        ottenuto = LibTesto.testoSuccessivo(originale, secondoTag2, tag1, tag4, tag3)
+        assert ottenuto == richiesto
+
+        richiesto = 'Prova ;,di tag, varii, ;tipo, e; testo successivo'
+        ottenuto = LibTesto.testoSuccessivo(originale, secondoTag, tag4)
+        assert ottenuto == richiesto
+
+        richiesto = 'Prova ;,di tag, varii, ;tipo, e; testo successivo'
+        ottenuto = LibTesto.testoSuccessivo(originale, secondoTag2, tag4)
+        assert ottenuto == richiesto
+
+    }// fine del metodo
+
 } // fine della classe test unit

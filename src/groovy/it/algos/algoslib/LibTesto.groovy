@@ -666,4 +666,62 @@ class LibTesto {
         return esiste
     }// fine del metodo
 
+    /**
+     * Trova la prima occorrenza della lista di tag
+     *
+     * @testo da controllare
+     * @tag uno o più
+     * @return posizione del primo tag trovato, zero se non ce ne sono
+     */
+    public static int trovaPrimo(String testo, String... listaTag) {
+        int pos = 0
+        int max = testo.length()
+        String singleTag
+        int singlePos
+
+        if (testo && listaTag) {
+            pos = max
+            listaTag.each {
+                singleTag = it
+                singlePos = testo.indexOf(singleTag)
+                if (singlePos > 0) {
+                    pos = LibMat.minimoPositivo(pos, singlePos)
+                }// fine del blocco if
+            }
+            if (pos == max) {
+                pos = 0
+            }// fine del blocco if
+        }// fine del blocco if
+
+        // valore di ritorno
+        return pos
+    }// fine del metodo
+
+    /**
+     * Testo rimanente dopo un secondo tag (fisso) successivo ad un primo tag (variabile)
+     * <p>
+     * Il primo tag può essere singolo oppure una lista di tag di cui rintracciare la prima occorrenza <br>
+     * Successivamente ricerca il secondo tag a partire da quello trovato <br>
+     * Recupera il testo successivo al secondo tag <br>
+     */
+    public static String testoSuccessivo(String testo, String secondoTag, String... listaPrimoTag) {
+        String testoRimanente = testo
+        int posPrimo = 0
+        int posSecondo = 0
+
+        if (testo && secondoTag && listaPrimoTag) {
+            posPrimo = trovaPrimo(testo, listaPrimoTag)
+        }// fine del blocco if
+
+        if (posPrimo > 0) {
+            posSecondo = testo.indexOf(secondoTag, posPrimo)
+        }// fine del blocco if
+
+        if (posSecondo > 0) {
+            testoRimanente = testo.substring(posSecondo + secondoTag.length())
+        }// fine del blocco if
+
+        return testoRimanente
+    } // fine del metodo
+
 }// fine della classe statica
