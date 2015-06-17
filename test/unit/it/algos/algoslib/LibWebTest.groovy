@@ -51,7 +51,7 @@ class LibWebTest extends GroovyTestCase {
     }// fine tests
 
     void testLegge3() {
-        String domain = 'http://it.wikipedia.org/wiki/Utente:Gac/Sandbox4'
+        String domain = 'https://it.wikipedia.org/wiki/Utente:Gac/Sandbox4'
         String testoPagina
         def ottenuto
 

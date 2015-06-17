@@ -111,7 +111,7 @@ class LibWeb {
         String domain
         String contenutoGrezzo1
         String contenutoGrezzo2
-        String tagWiki = 'http://it.wikipedia.org/wiki/'
+        String tagWiki = 'https://it.wikipedia.org/wiki/'
         String testo
         String tagIni1 = '<div id="bodyContent" class="mw-body-content">'
         String tagEnd1 = '<div class="printfooter">'
