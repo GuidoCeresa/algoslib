@@ -217,7 +217,7 @@ class LibWikiTest extends GroovyTestCase {
         ottenuto = Lib.Wiki.setNoGraffe(numero)
         assert ottenuto == null
 
-        ottenuto = LibWiki.setNoGraffe(vuota)
+        ottenuto = Lib.Wiki.setNoGraffe(vuota)
         assert ottenuto == vuota
     } // fine del test
 

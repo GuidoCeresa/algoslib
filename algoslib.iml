@@ -48,7 +48,7 @@
       <excludeFolder url="file://$MODULE_DIR$/target/work/scriptCache" />
       <excludeFolder url="file://$MODULE_DIR$/target/work/tomcat" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library" exported="">
       <library name="Grails User Library (algoslib)">
@@ -118,4 +118,3 @@
     <orderEntry type="library" name="grails-2.4.2" level="application" />
   </component>
 </module>
-
