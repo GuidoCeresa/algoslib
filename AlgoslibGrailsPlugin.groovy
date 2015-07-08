@@ -3,7 +3,7 @@
 //
 class AlgoslibGrailsPlugin {
     // the plugin version
-    def version = "0.60"
+    def version = "0.61"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "2.4.2 > *"
     // the other plugins this plugin depends on
@@ -29,6 +29,7 @@ Brief summary/description of the plugin.
 
     // URL to the plugin's documentation
     def documentation = "http://grails.org/plugin/algoslib"
+
 
     def doWithWebDescriptor = { xml ->
         // TODO Implement additions to web.xml (optional), this event occurs before

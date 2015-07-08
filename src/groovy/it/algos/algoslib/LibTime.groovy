@@ -531,4 +531,89 @@ class LibTime {
         return dataFormattata
     }// fine del metodo
 
+    /**
+     * Restituisce la durata di un intervallo, sotto forma di stringa
+     * Fino ad 1 minuto, la esprime in secondi
+     * Fino ad 1 ora, la esprime in minuti
+     * Fino a 24 ore, la esprime in ore
+     * Oltre, la esprime in giorni
+     */
+    public static String getTimeDiff(Date dataInizio, Date dataFine) {
+        return getTimeDiff(dataInizio.time, dataFine.time)
+    }// fine del metodo
+
+    /**
+     * Restituisce la durata di un intervallo, sotto forma di stringa
+     * Fino ad 1 minuto, la esprime in secondi
+     * Fino ad 1 ora, la esprime in minuti
+     * Fino a 24 ore, la esprime in ore
+     * Oltre, la esprime in giorni
+     */
+    public static String getTimeDiff(Timestamp dataInizio, Timestamp dataFine) {
+        return getTimeDiff(dataInizio.time, dataFine.time)
+    }// fine del metodo
+
+    /**
+     * Restituisce la durata di un intervallo, sotto forma di stringa
+     * Fino ad 1 minuto, la esprime in secondi
+     * Fino ad 1 ora, la esprime in minuti
+     * Fino a 24 ore, la esprime in ore
+     * Oltre, la esprime in giorni
+     */
+    public static String getTimeDiff(long dataInizio) {
+        return getTimeDiff(dataInizio, System.currentTimeMillis())
+    }// fine del metodo
+
+    /**
+     * Restituisce la durata di un intervallo, sotto forma di stringa
+     * Fino ad 1 minuto, la esprime in secondi
+     * Fino ad 1 ora, la esprime in minuti
+     * Fino a 24 ore, la esprime in ore
+     * Oltre, la esprime in giorni
+     */
+    public static String getTimeDiff(long dataInizio, long dataFine) {
+        String text = ''
+        long milForSec = 1000
+        long secForMin = 60
+        long minForOra = 60
+        long oreForDay = 24
+        long durataMilliSec = dataFine - dataInizio
+        long durataSec
+        long durataMin
+        long durataOre
+        long durataGiorni
+
+        if (durataMilliSec < milForSec) {
+            text = 'meno di 1 sec.'
+        } else {
+            durataSec = durataMilliSec / milForSec
+            if (durataSec < secForMin) {
+                text = durataSec + ' sec.'
+            } else {
+                durataMin = durataSec / secForMin
+                if (durataMin < minForOra) {
+                    text = durataMin + ' min.'
+                } else {
+                    durataOre = durataMin / minForOra
+                    if (durataOre < oreForDay) {
+                        if (durataOre == 1) {
+                            text = durataOre + ' ora'
+                        } else {
+                            text = durataOre + ' ore'
+                        }// fine del blocco if-else
+                    } else {
+                        durataGiorni = durataOre / oreForDay
+                        if (durataGiorni == 1) {
+                            text = durataGiorni + ' giorno'
+                        } else {
+                            text = durataGiorni + ' giorni'
+                        }// fine del blocco if-else
+                    }// fine del blocco if-else
+                }// fine del blocco if-else
+            }// fine del blocco if-else
+        }// fine del blocco if-else
+
+        return text
+    }// fine del metodo
+
 } // fine della classe statica
