@@ -566,12 +566,8 @@ class LibTime {
 
     /**
      * Restituisce la durata di un intervallo, sotto forma di stringa
-     * Fino ad 1 minuto, la esprime in secondi
-     * Fino ad 1 ora, la esprime in minuti
-     * Fino a 24 ore, la esprime in ore
-     * Oltre, la esprime in giorni
      */
-    public static String getTimeDiff(long dataInizio, long dataFine) {
+    private static String getTimeDiffBase(long dataInizio, long dataFine, boolean usaSempreMinuti) {
         String text = ''
         long milForSec = 1000
         long secForMin = 60
@@ -594,19 +590,23 @@ class LibTime {
                 if (durataMin < minForOra) {
                     text = durataMin + ' min.'
                 } else {
-                    durataOre = durataMin / minForOra
-                    if (durataOre < oreForDay) {
-                        if (durataOre == 1) {
-                            text = durataOre + ' ora'
-                        } else {
-                            text = durataOre + ' ore'
-                        }// fine del blocco if-else
+                    if (usaSempreMinuti) {
+                        text = LibTesto.formatNum(durataMin) + ' min.'
                     } else {
-                        durataGiorni = durataOre / oreForDay
-                        if (durataGiorni == 1) {
-                            text = durataGiorni + ' giorno'
+                        durataOre = durataMin / minForOra
+                        if (durataOre < oreForDay) {
+                            if (durataOre == 1) {
+                                text = durataOre + ' ora'
+                            } else {
+                                text = durataOre + ' ore'
+                            }// fine del blocco if-else
                         } else {
-                            text = durataGiorni + ' giorni'
+                            durataGiorni = durataOre / oreForDay
+                            if (durataGiorni == 1) {
+                                text = durataGiorni + ' giorno'
+                            } else {
+                                text = durataGiorni + ' giorni'
+                            }// fine del blocco if-else
                         }// fine del blocco if-else
                     }// fine del blocco if-else
                 }// fine del blocco if-else
@@ -614,6 +614,26 @@ class LibTime {
         }// fine del blocco if-else
 
         return text
+    }// fine del metodo
+
+    /**
+     * Restituisce la durata di un intervallo, sotto forma di stringa
+     * Fino ad 1 minuto, la esprime in secondi
+     * Fino ad 1 ora, la esprime in minuti
+     * Fino a 24 ore, la esprime in ore
+     * Oltre, la esprime in giorni
+     */
+    public static String getTimeDiff(long dataInizio, long dataFine) {
+        return getTimeDiffBase(dataInizio, dataFine, false)
+    }// fine del metodo
+
+    /**
+     * Restituisce la durata di un intervallo, sotto forma di stringa
+     * Fino ad 1 minuto, la esprime in secondi
+     * Oltre, la esprime in minuti
+     */
+    public static String getTimeDiffMin(long dataInizio, long dataFine) {
+        return getTimeDiffBase(dataInizio, dataFine, true)
     }// fine del metodo
 
 } // fine della classe statica

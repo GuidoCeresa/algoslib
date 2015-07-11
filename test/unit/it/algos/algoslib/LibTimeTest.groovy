@@ -230,6 +230,21 @@ class LibTimeTest extends GroovyTestCase {
         ottenuto = LibTime.getTimeDiff(inizio, fine)
         assertEquals(ottenuto, richiesto)
 
+        fine = 3660000
+        richiesto='1 ora'
+        ottenuto = LibTime.getTimeDiff(inizio, fine)
+        assertEquals(ottenuto, richiesto)
+
+        fine = 7199000
+        richiesto='1 ora'
+        ottenuto = LibTime.getTimeDiff(inizio, fine)
+        assertEquals(ottenuto, richiesto)
+
+        fine = 7200000
+        richiesto='2 ore'
+        ottenuto = LibTime.getTimeDiff(inizio, fine)
+        assertEquals(ottenuto, richiesto)
+
         fine = 86399999
         richiesto='23 ore'
         ottenuto = LibTime.getTimeDiff(inizio, fine)
@@ -238,6 +253,98 @@ class LibTimeTest extends GroovyTestCase {
         fine = 86400000
         richiesto='1 giorno'
         ottenuto = LibTime.getTimeDiff(inizio, fine)
+        assertEquals(ottenuto, richiesto)
+    }// fine del test
+
+    void testGetTimeDiffMin() {
+        long inizio = 0
+        long fine
+        String ottenuto
+        String richiesto
+
+        fine = 2
+        richiesto='meno di 1 sec.'
+        ottenuto = LibTime.getTimeDiffMin(inizio, fine)
+        assertEquals(ottenuto, richiesto)
+
+        fine = 999
+        richiesto='meno di 1 sec.'
+        ottenuto = LibTime.getTimeDiffMin(inizio, fine)
+        assertEquals(ottenuto, richiesto)
+
+        fine = 1000
+        richiesto='1 sec.'
+        ottenuto = LibTime.getTimeDiffMin(inizio, fine)
+        assertEquals(ottenuto, richiesto)
+
+        fine = 1999
+        richiesto='1 sec.'
+        ottenuto = LibTime.getTimeDiffMin(inizio, fine)
+        assertEquals(ottenuto, richiesto)
+
+        fine = 2000
+        richiesto='2 sec.'
+        ottenuto = LibTime.getTimeDiffMin(inizio, fine)
+        assertEquals(ottenuto, richiesto)
+
+        fine = 59999
+        richiesto='59 sec.'
+        ottenuto = LibTime.getTimeDiffMin(inizio, fine)
+        assertEquals(ottenuto, richiesto)
+
+        fine = 60000
+        richiesto='1 min.'
+        ottenuto = LibTime.getTimeDiffMin(inizio, fine)
+        assertEquals(ottenuto, richiesto)
+
+        fine = 239999
+        richiesto='3 min.'
+        ottenuto = LibTime.getTimeDiffMin(inizio, fine)
+        assertEquals(ottenuto, richiesto)
+
+        fine = 240000
+        richiesto='4 min.'
+        ottenuto = LibTime.getTimeDiffMin(inizio, fine)
+        assertEquals(ottenuto, richiesto)
+
+        fine = 290000
+        richiesto='4 min.'
+        ottenuto = LibTime.getTimeDiffMin(inizio, fine)
+        assertEquals(ottenuto, richiesto)
+
+        fine = 3599999
+        richiesto='59 min.'
+        ottenuto = LibTime.getTimeDiffMin(inizio, fine)
+        assertEquals(ottenuto, richiesto)
+
+        fine = 3600000
+        richiesto='60 min.'
+        ottenuto = LibTime.getTimeDiffMin(inizio, fine)
+        assertEquals(ottenuto, richiesto)
+
+        fine = 3660000
+        richiesto='61 min.'
+        ottenuto = LibTime.getTimeDiffMin(inizio, fine)
+        assertEquals(ottenuto, richiesto)
+
+        fine = 7199000
+        richiesto='119 min.'
+        ottenuto = LibTime.getTimeDiffMin(inizio, fine)
+        assertEquals(ottenuto, richiesto)
+
+        fine = 7200000
+        richiesto='120 min.'
+        ottenuto = LibTime.getTimeDiffMin(inizio, fine)
+        assertEquals(ottenuto, richiesto)
+
+        fine = 86399999
+        richiesto='1.439 min.'
+        ottenuto = LibTime.getTimeDiffMin(inizio, fine)
+        assertEquals(ottenuto, richiesto)
+
+        fine = 86400000
+        richiesto='1.440 min.'
+        ottenuto = LibTime.getTimeDiffMin(inizio, fine)
         assertEquals(ottenuto, richiesto)
     }// fine del test
 
